@@ -18,9 +18,9 @@ Or install it yourself as:
 
 ## Usage
 
-opng = CgBItoPNG::from_file('apple-optimized-image.png')
-opng.unoptimize
-opng.to_file('standard-image.png')
+    opng = CgBItoPNG::from_file('apple-optimized-image.png')
+    opng.unoptimize
+    opng.to_file('standard-image.png')
 
 ## Limitations
 
