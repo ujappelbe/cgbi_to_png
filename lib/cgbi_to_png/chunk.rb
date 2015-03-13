@@ -87,7 +87,9 @@ module CgBItoPNG
     def self.get_chunks(data_blob)
       pngheader = PNG_HEADER
       blob_header = data_blob[0..7]
-      raise ArgumentError.new("Data is not a valid PNG file. Header missmatch (#{pngheader} != #{blob_header})") unless pngheader == blob_header
+      hex_head = pngheader.unpack("H*").first
+      hex_blob_head = blob_header.unpack("H*").first
+      raise ArgumentError.new("Data is not a valid PNG file. Header missmatch (#{hex_head} != #{hex_blob_head})") unless pngheader == blob_header
       chunks = {}
       index = LEN_HEADER
       while index < data_blob.length

@@ -5,7 +5,7 @@ require 'cgbi_to_png/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "cgbi_to_png"
-  spec.version       = OptimizedPngs::VERSION
+  spec.version       = CgBItoPNG::VERSION
   spec.authors       = ["Jon Appelberg"]
   spec.summary       = %q{Convert Apple optimized PNG images to standard PNG images}
   spec.description   = %q{This Gem allows converting CgBI (Apple's optimized PNG) images into 'standard' PNG images. See http://iphonedevwiki.net/index.php/CgBI_file_format}

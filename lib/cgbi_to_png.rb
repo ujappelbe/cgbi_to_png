@@ -2,7 +2,7 @@ require 'cgbi_to_png/version'
 require 'cgbi_to_png/png_file.rb'
 
 module CgBItoPNG
-  PNG_HEADER = "\x89PNG\r\n\x1a\n".force_encoding('ASCII-8BIT')
+  PNG_HEADER = "\x89PNG\r\n\x1a\n".force_encoding('ASCII-8BIT').freeze
   LEN_HEADER = 8
   LEN_LENGTH = 4
   LEN_CHUNK_TYPE = 4

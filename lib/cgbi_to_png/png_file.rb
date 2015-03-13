@@ -3,7 +3,7 @@ require 'cgbi_to_png/chunk'
 module CgBItoPNG
   class PNGfile
     def initialize(data_blob)
-      @blob = data_blob
+      @blob = data_blob.force_encoding('ASCII-8BIT')
       @chunks = Chunk.get_chunks(data_blob)
       @ihdr = @chunks['IHDR'].first.get_dimensions
       @width = @ihdr[:width]
@@ -22,7 +22,8 @@ module CgBItoPNG
     end
 
     def to_blob
-      blob = PNG_HEADER
+      blob = ""
+      blob << PNG_HEADER
       @chunks.each do |_k, v|
         v.each do |chunk|
           next if chunk.type == 'CgBI'

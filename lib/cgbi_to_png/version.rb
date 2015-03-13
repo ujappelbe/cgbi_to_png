@@ -1,3 +1,3 @@
-module OptimizedPngs
-  VERSION = "0.0.1"
+module CgBItoPNG
+  VERSION = "0.0.2"
 end
