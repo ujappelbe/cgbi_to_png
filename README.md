@@ -18,9 +18,37 @@ Or install it yourself as:
 
 ## Usage
 
+### Unoptimize single file
     opng = CgBItoPNG::from_file('apple-optimized-image.png')
     opng.unoptimize
     opng.to_file('standard-image.png')
+
+### Unoptimized a folder of files
+    require 'cgbi_to_png'
+    require 'fileutils'
+    OUT_DIR = 'unoptimized_pngs'
+    
+    FileUtils.mkdir_p OUT_DIR
+    
+    succesfull = []
+    failed = {}
+    Dir.foreach('.') do |item|
+      next unless item[/.png$/]
+      begin
+        opng = CgBItoPNG::from_file(item)
+        opng.unoptimize if opng.optimized?
+        opng.to_file(File.join(OUT_DIR, item))
+        succesfull << item
+      rescue Exception => e
+        failed[item] = e
+      end
+      puts "Done"
+      puts "#{succesfull.count} successful"
+      puts "#{failed.count} failed"
+      failed.each do |k,v|
+        puts "#{k}: #{v}"
+      end
+    end
 
 ## Limitations
 
